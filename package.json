@@ -1,6 +1,6 @@
 {
   "name": "leaflet-arrows",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "description": "Draw arrows on your Leaflet maps.",
   "main": "leaflet-arrows.js",
   "scripts": {
