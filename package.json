@@ -1,6 +1,6 @@
 {
   "name": "leaflet-arrows",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Draw arrows on your Leaflet maps.",
   "main": "leaflet-arrows.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "url": "https://github.com/meteotest/leaflet-arrows.git"
   },
   "dependencies": {
-      "leaflet": "*"
+    "leaflet": "*"
   },
   "homepage": "http://meteotest.github.io/leaflet-arrows/",
   "bugs": "https://github.com/meteotest/leaflet-arrows/issues"
