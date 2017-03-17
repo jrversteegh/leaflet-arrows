@@ -1,2 +1,5 @@
-.idea/
-node_modules
+**/.directory
+**/.DS_Store
+**/Thumbs.db
+
+node_modules/

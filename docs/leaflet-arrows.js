@@ -1,22 +1,16 @@
 // Leaflet Arrows by Meteotest
 // https://github.com/meteotest/leaflet-arrows
 
-// Module Loader Boilerplate
-(function(factory, window) {
-  // define an AMD module that relies on 'leaflet'
+;void function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['leaflet'], factory);
-
-    // define a Common JS module that relies on 'leaflet'
   } else if (typeof exports === 'object') {
     module.exports = factory(require('leaflet'));
   }
-
-  // attach your plugin to the global 'L' variable
-  if (typeof window !== 'undefined' && window.L) {
-    window.L.Arrow = factory(L);
+  if (typeof root !== 'undefined' && root.L) {
+    root.L.Arrow = factory(L);
   }
-}(function(L) {
+}(this, function (L) {
   // beware! the arrow factory
   var Arrow = L.FeatureGroup.extend({
     options: {
@@ -163,17 +157,19 @@
         this.addLayer(invisibleBackgroundPolyline);
         this.addLayer(polyline);
 
-
-        // that special case, where a circle has to be drawn on the source of the arrow
+        // That special case, where a circle has to be drawn on the source of the arrow.
         if (this.options.drawSourceMarker) {
+          // use the same color as the arrow does
+          this.options.sourceMarkerOptions.fillColor = this.options.color;
           if (typeof this._sourceMarker === 'undefined') {
-            // use the same coloar as the arrow does
-            this.options.sourceMarkerOptions.fillColor = this.color;
             this._sourceMarker = L.circleMarker(this._data.latlng, this.options.sourceMarkerOptions);
           } else {
-            // there is a chance, that the latlng values have been changed by the setData-function
+            // There is a chance that the latlng values have been changed by the setData-function.
             this._sourceMarker.setLatLng(this._data.latlng);
+            // Also the style may have changed before a manual redraw() call.
+            this._sourceMarker.setStyle(this.options.sourceMarkerOptions);
           }
+          this.addLayer(this._sourceMarker);
         }
       }
     },
@@ -290,5 +286,6 @@
       return arr;
     }
   });
+
   return Arrow;
-}, window));
+});

@@ -15,8 +15,7 @@
 		<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
 
 		<script src="leaflet-arrows.js"></script>
-		<script src="WindScale.js"></script>
-
+		<script src="wind-scale.js"></script>
 	</head>
 	<body>
 
@@ -57,11 +56,9 @@
 					distanceUnit: 'km',
 					isWindDegree: true,
 					stretchFactor: 1,
-					pathOptions: {
-						color: '#155799',
-						opacity: 0.9
-					},
-					popupContent: function(data) {
+					color: '#155799',
+					opacity: 0.8,
+					popupContent: function (data) {
 						return '<strong>' + data.title + '</strong>';
 					},
 					arrowheadLength: 5
@@ -97,10 +94,12 @@
 	distanceUnit: 'km',
 	isWindDegree: true,
 	stretchFactor: 1,
-	popupContent: function(data) {
-		return '&lt;em>' + data.title + '&lt;/em>';
+	popupContent: function (data) {
+		return '&lt;strong>' + data.title + '&lt;/strong>';
 	},
-	arrowheadLength: 0.8
+	arrowheadLength: 0.8,
+	color: '#155799',
+	opacity: 0.8
 };
 
 var arrowData = {

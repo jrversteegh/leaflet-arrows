@@ -1,22 +1,16 @@
 // Leaflet WindScale-Control for leaflet-arrows by Meteotest
 // https://github.com/meteotest/leaflet-arrows
 
-// Module Loader Boilerplate
-(function(factory, window) {
-  // define an AMD module that relies on 'leaflet'
+;void function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['leaflet'], factory);
-
-    // define a Common JS module that relies on 'leaflet'
   } else if (typeof exports === 'object') {
     module.exports = factory(require('leaflet'));
   }
-
-  // attach your plugin to the global 'L' variable
-  if (typeof window !== 'undefined' && window.L) {
-    window.L.WindScale = factory(L);
+  if (typeof root !== 'undefined' && root.L) {
+    root.L.WindScale = factory(L);
   }
-}(function(L) {
+}(this, function (L) {
   // Extend with WindScale
   // added a new control to display the windscale.
   // Built upon the core scale object
@@ -117,5 +111,6 @@
       return pow10 * d;
     }
   });
+
   return WindScale;
-}, window));
+});
